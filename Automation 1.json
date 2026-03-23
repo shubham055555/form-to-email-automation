@@ -1,0 +1,235 @@
+{
+  "name": "Automation 1",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "first Automation to understand the working of nodes and inside setting or configuration ",
+        "height": 112
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        -224
+      ],
+      "id": "497671ab-191f-4481-8f72-b2d80a971aa3",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "formTitle": "Shubham Consultation  Form ",
+        "formDescription": "Connect with Shubham for AI automation and consultation ",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Name "
+            },
+            {
+              "fieldLabel": "Service ",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Consultation"
+                  },
+                  {
+                    "option": "Training"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false,
+          "buttonLabel": "Submit KRR de "
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        -400,
+        32
+      ],
+      "id": "9b7c5dc6-0d6e-4a86-9186-79ca76770bb3",
+      "name": "On form submission",
+      "webhookId": "26298437-cb15-4ed4-a1ea-cf66c55d68ad",
+      "notesInFlow": true,
+      "retryOnFail": false,
+      "maxTries": 2,
+      "waitBetweenTries": 1,
+      "notes": "My First Form "
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1gLjNnSEKu1Wo4OqLIsSgWLqZ9vOEjsrTMLhDqiSwniQ",
+          "mode": "list",
+          "cachedResultName": "Leads ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gLjNnSEKu1Wo4OqLIsSgWLqZ9vOEjsrTMLhDqiSwniQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gLjNnSEKu1Wo4OqLIsSgWLqZ9vOEjsrTMLhDqiSwniQ/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Service",
+              "displayName": "Service",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "submittedAt",
+              "displayName": "submittedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Name ",
+              "displayName": "Name ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Service ",
+              "displayName": "Service ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "formMode",
+              "displayName": "formMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -192,
+        32
+      ],
+      "id": "7950bf12-f404-48a5-a0c6-a4be41187469",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UGOBWZX4iVMKiUgA",
+          "name": "Google Sheets account"
+        }
+      },
+      "notes": "My First Sheet "
+    },
+    {
+      "parameters": {
+        "sendTo": "editaura330@gmail.com",
+        "subject": "We’ve received your request ",
+        "emailType": "text",
+        "message": "=Hello {{Name}},\n\n👋 Thanks for reaching out to us!\n\nWe’ve successfully received your request. Here’s a quick summary:\n\n━━━━━━━━━━━━━━━\n📌 Name: {{ $json['Name '] }}\n📌 Service: {{ $json['Service '] }}\n📌 Date: {{ $json.submittedAt }}\n━━━━━━━━━━━━━━━\n\nOur team is already working on it and will connect with you soon.\n\nTill then, sit back and relax 😄\n\nWarm regards,\nSupport Team 💼\n",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        16,
+        32
+      ],
+      "id": "ad84e412-4b0d-4465-9797-6faceb3f5192",
+      "name": "Send a message",
+      "webhookId": "84c8eacf-5600-4c84-8b85-e13809f08ac4",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "94ZOwqn2wZHfscuL",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "dd8184ff-cb60-4785-b909-4e33765fd0eb",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "1798b12ac81d75507801de3455ae72421e876ac2f4bd5a4455e9e00f468538ba"
+  },
+  "id": "tC1LuzfzCiimFIXy",
+  "tags": [
+    {
+      "name": "n8n-learn",
+      "id": "6OMcaKC0E8y3tcCq",
+      "updatedAt": "2026-03-23T18:28:35.265Z",
+      "createdAt": "2026-03-23T18:28:35.265Z"
+    }
+  ]
+}
